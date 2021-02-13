@@ -82,6 +82,7 @@ public:
         SerialProtocol_IMUOUT = 46,
         // Reserving Serial Protocol 47 for SerialProtocol_IQ
         SerialProtocol_PPP = 48,
+        SerialProtocol_IBUS_Telem = 49,                //IBus telemetry data i.e. via telemetry port of FS-i6ab
         SerialProtocol_NumProtocols                    // must be the last value
     };
 

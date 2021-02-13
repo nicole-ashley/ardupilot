@@ -450,7 +450,13 @@ void AP_Vehicle::setup()
         GCS_SEND_TEXT(MAV_SEVERITY_ERROR, "%s Failed to Initialize", AP_DDS_Client::msg_prefix);
     }
 #endif
+
+#if HAL_IBUS_TELEM_ENABLED
+    //will try to init IBus telemetry if configured on a serial port
+    ibus_telem.init();
+#endif
 }
+
 
 void AP_Vehicle::loop()
 {
@@ -573,6 +579,9 @@ const AP_Scheduler::Task AP_Vehicle::scheduler_tasks[] = {
 #endif
 #if AP_FILTER_ENABLED
     SCHED_TASK_CLASS(AP_Filters,   &vehicle.filters,        update,                   1, 100, 252),
+#endif
+#if HAL_IBUS_TELEM_ENABLED
+    SCHED_TASK_CLASS(AP_IBus_Telem, &vehicle.ibus_telem,    loop,                     400, 85),
 #endif
     SCHED_TASK(update_arming,          1,     50, 253),
 };

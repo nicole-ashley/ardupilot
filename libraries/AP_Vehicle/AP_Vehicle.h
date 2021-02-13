@@ -68,6 +68,7 @@
 #include <Filter/LowPassFilter.h>
 #include <AP_KDECAN/AP_KDECAN.h>
 #include <Filter/AP_Filter.h>
+#include <AP_IBus_Telem/AP_IBus_Telem.h>
 
 class AP_DDS_Client;
 
@@ -308,6 +309,11 @@ protected:
     AP_Button button;
 #endif
     RangeFinder rangefinder;
+
+#if HAL_IBUS_TELEM_ENABLED
+    //telemetry
+    AP_IBus_Telem ibus_telem;
+#endif
 
 #if AP_RSSI_ENABLED
     AP_RSSI rssi;
