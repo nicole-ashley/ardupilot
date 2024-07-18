@@ -580,9 +580,6 @@ const AP_Scheduler::Task AP_Vehicle::scheduler_tasks[] = {
 #if AP_FILTER_ENABLED
     SCHED_TASK_CLASS(AP_Filters,   &vehicle.filters,        update,                   1, 100, 252),
 #endif
-#if HAL_IBUS_TELEM_ENABLED
-    SCHED_TASK_CLASS(AP_IBus_Telem, &vehicle.ibus_telem,    loop,                     400, 85),
-#endif
     SCHED_TASK(update_arming,          1,     50, 253),
 };
 
